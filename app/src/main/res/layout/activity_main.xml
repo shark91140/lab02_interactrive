@@ -14,39 +14,52 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Quantity"
+        android:textSize="36sp"
         android:textAllCaps="true"/>
-    <Button
-        android:layout_width="30dp"
-        android:layout_height="40dp"
-        android:text="+"
-        android:onClick="add"/>
-
-    <TextView
-        android:id="@+id/quantity_text_view"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0"
-        android:background="@android:color/holo_blue_bright"/>
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:text="＋"
+            android:textSize="20sp"
+            android:onClick="add"/>
 
-    <Button
-        android:layout_width="30dp"
-        android:layout_height="40dp"
-        android:text="-"
-        android:onClick="Subtract"/>
+        <TextView
+            android:id="@+id/quantity_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="36sp"
+            android:background="@android:color/holo_blue_bright"/>
+
+        <Button
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:text="－"
+            android:textSize="20sp"
+            android:onClick="Subtract"/>
+    </LinearLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="price"/>
+        android:text="price"
+        android:textSize="36sp"/>
     <TextView
         android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=" "
+        android:textSize="36sp"
         android:background="@android:color/holo_blue_bright"/>
     <Button
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:text="歸零"
+        android:textSize="36sp"
         android:onClick="selfDestruct" />
 
 </LinearLayout>

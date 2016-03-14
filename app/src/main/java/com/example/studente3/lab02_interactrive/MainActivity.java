@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         if (number>0){
             number--;
         }else {number = 0;}
+
         display(number);
     }
 
@@ -47,6 +48,12 @@ public class MainActivity extends AppCompatActivity {
         int money = 10 * number;
         String mymoney = NumberFormat.getCurrencyInstance().format(money);
         TextView price = (TextView) findViewById(R.id.price);
-        price.setText(mymoney);
+        if (number == 0){
+            price.setText("Free\n "+mymoney);
+        }
+        if (number > 0){
+            price.setText("Thank you\n "+mymoney);
+        }
+
     }
 }
