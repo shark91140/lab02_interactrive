@@ -5,8 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import java.text.NumberFormat;
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -15,45 +13,64 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void selfDestruct(View view) {
+    private int mNumber = 0;
+    private int mPrice = 10;
+    private String mNT = "NT$";
+    private StringBuilder mSB =new StringBuilder(mNT);
 
-        display(0);
+    public void order(View view) {
+
+        displayPrice();
     }
-    public void add(View view) {
-        int number = getNumber();
-        number++   ;
-        display(number);
+
+    public void increase(View view) {
+
+        displayQuantity(++mNumber);
+        resetPrice();
     }
 
     private int getNumber() {
-        TextView quantitytextview = (TextView) findViewById(R.id.quantity_text_view);
-        String numStr = quantitytextview.getText().toString();
+        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
+        String numStr = quantityTextView.getText().toString();
         return Integer.parseInt(numStr);
     }
 
-    public void Subtract(View view) {
-        int number = getNumber();
+    public void decrease(View view) {
 
-        if (number>0){
-            number--;
-        }else {number = 0;}
-
-        display(number);
+        if (mNumber > 0) {
+            mNumber--;
+        } else {
+            mNumber = 0;
+        }
+        displayQuantity(mNumber);
+        resetPrice();
     }
 
-    private void display(int number) {
+    private void displayPrice() {
 
-        TextView quantitytextview = (TextView) findViewById(R.id.quantity_text_view);
-        quantitytextview.setText(String.valueOf(number));
-        int money = 10 * number;
-        String mymoney = NumberFormat.getCurrencyInstance().format(money);
+        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
+        int money = mPrice * mNumber;
+        int start = mNT.length();
+        int end =mSB.length();
+        mSB.delete(start,end).append(money)
+                .append(money == 0 ? "\nFree" : "\nThank you");
         TextView price = (TextView) findViewById(R.id.price);
-        if (number == 0){
-            price.setText("Free\n "+mymoney);
-        }
-        if (number > 0){
-            price.setText("Thank you\n "+mymoney);
-        }
+        price.setText(mSB);
+    }
 
+    private void displayQuantity(int number) {
+        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
+        quantityTextView.setText(String.valueOf(number));
+    }
+    private void resetPrice(){
+        TextView price = (TextView) findViewById(R.id.price);
+        price.setText(" ");
+    }
+
+    public void resetQuantity(View view) {
+        mNumber = 0;
+        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
+        quantityTextView.setText(String.valueOf(mNumber));
+                resetPrice();
     }
 }

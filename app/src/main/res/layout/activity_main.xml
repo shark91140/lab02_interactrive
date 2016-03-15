@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -14,52 +14,72 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Quantity"
-        android:textSize="36sp"
-        android:textAllCaps="true"/>
+        android:textAllCaps="true"
+        android:textSize="36sp" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <Button
             android:layout_width="45dp"
             android:layout_height="wrap_content"
+            android:background="@android:color/holo_orange_dark"
+            android:onClick="increase"
             android:text="＋"
-            android:textSize="20sp"
-            android:onClick="add"/>
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/quantity_text_view"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
+            android:background="@android:color/holo_blue_bright"
             android:text="0"
-            android:textSize="36sp"
-            android:background="@android:color/holo_blue_bright"/>
+            android:textAlignment="center"
+            android:textSize="20sp" />
 
         <Button
             android:layout_width="45dp"
             android:layout_height="wrap_content"
+            android:background="@android:color/holo_orange_dark"
+            android:onClick="decrease"
             android:text="－"
-            android:textSize="20sp"
-            android:onClick="Subtract"/>
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="price"
-        android:textSize="36sp"/>
+        android:textSize="36sp" />
+
     <TextView
         android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_bright"
         android:text=" "
-        android:textSize="36sp"
-        android:background="@android:color/holo_blue_bright"/>
+        android:textSize="20sp" />
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
     <Button
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/black"
+        android:onClick="order"
+        android:text="Order"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="36sp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="歸零"
-        android:textSize="36sp"
-        android:onClick="selfDestruct" />
-
+        android:onClick="resetQuantity"
+        />
+</LinearLayout>
 </LinearLayout>
