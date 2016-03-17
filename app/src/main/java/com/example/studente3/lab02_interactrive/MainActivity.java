@@ -3,6 +3,7 @@ package com.example.studente3.lab02_interactrive;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -11,66 +12,97 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        originalMessage();
+        displayMessage();
     }
 
     private int mNumber = 0;
-    private int mPrice = 10;
+    private int mPrice = 50;
+    private String mName = "卡卡西";
     private String mNT = "NT$";
-    private StringBuilder mSB =new StringBuilder(mNT);
+    private StringBuilder mMessage =new StringBuilder();
+    private StringBuilder mNumberText = new StringBuilder();
+
+
+
 
     public void order(View view) {
-
-        displayPrice();
+        resetPrice();
+        setPrice();
+        displayMessage();
     }
 
     public void increase(View view) {
-
-        displayQuantity(++mNumber);
+        ++mNumber;
+        displayQuantity();
         resetPrice();
-    }
-
-    private int getNumber() {
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
-        String numStr = quantityTextView.getText().toString();
-        return Integer.parseInt(numStr);
+        originalMessage();
+        displayMessage();
     }
 
     public void decrease(View view) {
 
         if (mNumber > 0) {
             mNumber--;
-        } else {
-            mNumber = 0;
         }
-        displayQuantity(mNumber);
+        displayQuantity();
         resetPrice();
+        originalMessage();
+        displayMessage();
     }
 
-    private void displayPrice() {
-
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
+    private void setPrice() {
+        CheckBox checkbox = (CheckBox)findViewById(R.id.toppings_checkbox);
         int money = mPrice * mNumber;
-        int start = mNT.length();
-        int end =mSB.length();
-        mSB.delete(start,end).append(money)
-                .append(money == 0 ? "\nFree" : "\nThank you");
-        TextView price = (TextView) findViewById(R.id.price);
-        price.setText(mSB);
+        mMessage.append("Name: ")
+                .append(mName)
+                .append("\n")
+                .append("是否加泡菜?")
+                .append(checkbox.isChecked())
+                .append("\n");
+        if (mNumber == 0){
+            mMessage.append("Free");
+        }else{
+            mMessage.append("Quantity: ")
+                    .append(mNumber)
+                    .append("\n")
+                    .append("價錢: ")
+                    .append(money);
+        }
     }
 
-    private void displayQuantity(int number) {
+    private void displayMessage() {
+        TextView price = (TextView) findViewById(R.id.price);
+        price.setText(mMessage);
+    }
+
+    private void displayQuantity() {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
-        quantityTextView.setText(String.valueOf(number));
+        resetQuantity();
+        mNumberText.append(mNumber);
+        quantityTextView.setText(mNumberText);
     }
     private void resetPrice(){
-        TextView price = (TextView) findViewById(R.id.price);
-        price.setText(" ");
+        int start = 0;
+        int end = mMessage.length();
+        mMessage.delete(start, end);
     }
 
-    public void resetQuantity(View view) {
-        mNumber = 0;
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
-        quantityTextView.setText(String.valueOf(mNumber));
-                resetPrice();
+    private void originalMessage() {
+        mMessage.append("臭豆腐")
+                .append(mNT)
+                .append(mPrice);
+    }
+
+    public void resetQuantity() {
+        int start = 0;
+        int end = mNumberText.length();
+        mNumberText.delete(start, end);
+    }
+
+    public void pickle(View view) {
+        resetPrice();
+        originalMessage();
+        displayMessage();
     }
 }
