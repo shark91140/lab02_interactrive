@@ -105,4 +105,7 @@ public class MainActivity extends AppCompatActivity {
         originalMessage();
         displayMessage();
     }
+
+    public void mediator(View view) {
+    }
 }

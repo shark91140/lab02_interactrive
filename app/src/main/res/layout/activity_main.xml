@@ -24,7 +24,7 @@
         android:layout_marginTop="16dp"
         android:paddingLeft="16dp"
         android:text="泡菜"
-        android:onClick="pickle"/>
+        android:onClick="mediator"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
             android:layout_width="45dp"
             android:layout_height="wrap_content"
             android:background="@android:color/holo_orange_dark"
-            android:onClick="increase"
+            android:onClick="mediator"
             android:text="＋"
             android:textColor="@android:color/white"
             android:textSize="20sp" />
@@ -60,7 +60,7 @@
             android:layout_width="45dp"
             android:layout_height="wrap_content"
             android:background="@android:color/holo_orange_dark"
-            android:onClick="decrease"
+            android:onClick="mediator"
             android:text="－"
             android:textColor="@android:color/white"
             android:textSize="20sp" />
@@ -87,7 +87,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/black"
-        android:onClick="order"
+        android:onClick="mediator"
         android:text="Order"
         android:textColor="@android:color/holo_red_light"
         android:textSize="36sp" />
