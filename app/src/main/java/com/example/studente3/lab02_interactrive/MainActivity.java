@@ -26,30 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public void order(View view) {
-        resetPrice();
-        setPrice();
-        displayMessage();
-    }
 
-    public void increase(View view) {
-        ++mNumber;
-        displayQuantity();
-        resetPrice();
-        originalMessage();
-        displayMessage();
-    }
-
-    public void decrease(View view) {
-
-        if (mNumber > 0) {
-            mNumber--;
-        }
-        displayQuantity();
-        resetPrice();
-        originalMessage();
-        displayMessage();
-    }
 
     private void setPrice() {
         CheckBox checkbox = (CheckBox)findViewById(R.id.toppings_checkbox);
@@ -105,7 +82,38 @@ public class MainActivity extends AppCompatActivity {
         originalMessage();
         displayMessage();
     }
+    public void order(View view) {
+        resetPrice();
+        setPrice();
+        displayMessage();
+    }
 
+    public void increase(View view) {
+        ++mNumber;
+        displayQuantity();
+        resetPrice();
+        originalMessage();
+        displayMessage();
+    }
+
+    public void decrease(View view) {
+
+        if (mNumber > 0) {
+            mNumber--;
+        }
+        displayQuantity();
+        resetPrice();
+        originalMessage();
+        displayMessage();
+    }
     public void mediator(View view) {
+        switch(view.getId())
+        {
+            case R.id.toppings_checkbox: pickle(view);
+            case R.id.order:order(view);
+            case R.id.increase:increase(view);
+            case R.id.decrease:decrease(view);
+                default:break;
+        }
     }
 }
